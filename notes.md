@@ -2,4 +2,4 @@
 "assets/([A-Z a-z 0-9 / . -]*)"
 
 # regx for changing it to static
-{% static '$1' %}
+{% static 'assets/$1' %}
