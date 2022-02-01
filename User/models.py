@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Profile(models.Model):
+    site_title = models.CharField(max_length=10, default='Idenify')
     name = models.CharField(max_length=255, default="John Doe")
     greeting = models.CharField(max_length=255, default="Hi, I am")
     main_designation = models.CharField(max_length=255, default="Web Developer")
