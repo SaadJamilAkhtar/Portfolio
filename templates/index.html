@@ -74,8 +74,13 @@
         <!-- about wrapper -->
         <div class="about">
             <div class="about-img-holder">
-                <img src={% static 'assets/imgs/man.png' %} class="about-img"
-                     alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                {% if user.image %}
+                    <img src="{{ user.image.url }}" class="about-img"
+                         alt="About">
+                {% else %}
+                    <img src="{% static 'assets/imgs/man.png' %}" class="about-img"
+                         alt="About">
+                {% endif %}
             </div>
             <div class="about-caption">
                 <p class="section-subtitle">Who Am I ?</p>

@@ -17,11 +17,11 @@ class Profile(models.Model):
     enable_posts = models.BooleanField(default=True)
     posts = models.ManyToManyField('Posts', blank=True)
     linkedin = models.URLField(blank=True, null=True)
-    image = models.ImageField(upload_to='media/profile', null=True, blank=True)
+    image = models.ImageField(upload_to='images/profile', null=True, blank=True)
 
 
 class Testimonials(models.Model):
-    image = models.ImageField(upload_to='media/images/clients')
+    image = models.ImageField(upload_to='images/clients')
     testimonial = models.TextField()
     name = models.CharField(max_length=15)
 
@@ -38,14 +38,14 @@ class Pricing(models.Model):
 class Services(models.Model):
     name = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='media/images')
+    image = models.ImageField(upload_to='images/services')
 
     class Meta:
         verbose_name_plural = "Services"
 
 
 class Posts(models.Model):
-    image = models.ImageField(upload_to='media/images/posts')
+    image = models.ImageField(upload_to='images/posts')
     title = models.CharField(max_length=255)
     description = models.TextField()
     url = models.URLField(blank=True, null=True)
