@@ -4,24 +4,28 @@ from django.db import models
 class Profile(models.Model):
     site_title = models.CharField(max_length=10, default='Idenify')
     name = models.CharField(max_length=255, default="John Doe")
-    greeting = models.CharField(max_length=255, default="Hi, I am")
+    greeting = models.CharField(max_length=255, default="Hi!")
     main_designation = models.CharField(max_length=255, default="Web Developer")
-    about = models.TextField()
-    cv = models.FileField(upload_to='media/documents/')
+    about = models.TextField(null=True, blank=True)
+    cv = models.FileField(upload_to='media/documents/', null=True, blank=True)
     enable_services = models.BooleanField(default=True)
-    services = models.ManyToManyField('Services')
+    services = models.ManyToManyField('Services', blank=True)
     enable_pricing = models.BooleanField(default=True)
-    pricing = models.ManyToManyField('Pricing')
+    pricing = models.ManyToManyField('Pricing', blank=True)
     enable_testimonials = models.BooleanField(default=True)
-    testimonials = models.ManyToManyField("Testimonials")
+    testimonials = models.ManyToManyField("Testimonials", blank=True)
     enable_posts = models.BooleanField(default=True)
-    posts = models.ManyToManyField('Posts')
+    posts = models.ManyToManyField('Posts', blank=True)
+    linkedin = models.URLField(blank=True, null=True)
 
 
 class Testimonials(models.Model):
     image = models.ImageField(upload_to='media/images/clients')
     testimonial = models.TextField()
     name = models.CharField(max_length=15)
+
+    class Meta:
+        verbose_name_plural = "Testimonials"
 
 
 class Pricing(models.Model):
@@ -35,6 +39,9 @@ class Services(models.Model):
     category = models.CharField(max_length=255)
     image = models.ImageField(upload_to='media/images')
 
+    class Meta:
+        verbose_name_plural = "Services"
+
 
 class Posts(models.Model):
     image = models.ImageField(upload_to='media/images/posts')
@@ -42,3 +49,5 @@ class Posts(models.Model):
     description = models.TextField()
     url = models.URLField(blank=True, null=True)
 
+    class Meta:
+        verbose_name_plural = "Posts"
