@@ -17,6 +17,7 @@ class Profile(models.Model):
     enable_posts = models.BooleanField(default=True)
     posts = models.ManyToManyField('Posts', blank=True)
     linkedin = models.URLField(blank=True, null=True)
+    image = models.ImageField(upload_to='media/profile', null=True, blank=True)
 
 
 class Testimonials(models.Model):
