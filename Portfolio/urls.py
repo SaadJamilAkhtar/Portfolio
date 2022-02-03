@@ -22,5 +22,6 @@ from Main.views import *
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('', index, name='main')
+                  path('', index, name='main'),
+                  path('login', TemplateView.as_view(template_name="login.html"))
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
