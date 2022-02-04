@@ -1,4 +1,5 @@
 from django import forms
+from User.models import *
 
 
 class LoginForm(forms.Form):
@@ -14,3 +15,17 @@ class LoginForm(forms.Form):
             'placeholder': 'Password'
         }
     ))
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = "__all__"
+        widgets = {
+            'cv': forms.FileInput(attrs={
+                'class': 'basic-filepond'
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'image-preview-filepond'
+            })
+        }

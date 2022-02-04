@@ -1,0 +1,87 @@
+{% extends 'Main.html' %}
+{% load crispy_forms_tags %}
+{% block style %}
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+          rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Edit Profile</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-vertical" method="get" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-body">
+                                <div class="row">
+                                    {{ form | crispy }}
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <!-- filepond validation -->
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+
+    <!-- image editor -->
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-filter/dist/filepond-plugin-image-filter.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script>
+        // register desired plugins...
+        FilePond.registerPlugin(
+            // validates the size of the file...
+            FilePondPluginFileValidateSize,
+            // validates the file type...
+            FilePondPluginFileValidateType,
+
+            // calculates & dds cropping info based on the input image dimensions and the set crop ratio...
+            FilePondPluginImageCrop,
+            // preview the image file type...
+            FilePondPluginImagePreview,
+            // filter the image file
+            FilePondPluginImageFilter,
+            // corrects mobile image orientation...
+            FilePondPluginImageExifOrientation,
+            // calculates & adds resize information...
+            FilePondPluginImageResize,
+        );
+
+        // Filepond: Basic
+        FilePond.create(document.querySelector('.basic-filepond'), {
+            allowImagePreview: false,
+            allowMultiple: false,
+            allowFileEncode: false,
+            required: false
+        });
+        // Filepond: Image Preview
+        FilePond.create(document.querySelector('.image-preview-filepond'), {
+            allowImagePreview: true,
+            allowImageFilter: false,
+            allowImageExifOrientation: false,
+            allowImageCrop: false,
+            acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
+            fileValidateTypeDetectType: (source, type) => new Promise((resolve, reject) => {
+                // Do custom type detection here and return with promise
+                resolve(type);
+            })
+        });
+    </script>
+{% endblock %}
