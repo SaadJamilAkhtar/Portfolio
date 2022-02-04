@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from User.models import *
+from .forms import *
 
 
 def index(request):
@@ -13,3 +14,12 @@ def index(request):
     }
 
     return render(request, 'index.html', data)
+
+
+def login(request):
+    if request.POST:
+        print(request.POST)
+    data = {
+        'form': LoginForm()
+    }
+    return render(request, 'login.html', data)
