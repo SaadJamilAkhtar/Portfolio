@@ -20,12 +20,15 @@ class LoginForm(forms.Form):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = "__all__"
+        fields = ["site_title", "name", "greeting", "main_designation", "about", "enable_pricing", "enable_services",
+                  "enable_posts", "enable_testimonials", "cv", "image"]
+        labels = {"image": "Profile Image", "cv": "CV"}
+        exclude = ["pricing", "testimonials", "posts", "services"]
         widgets = {
             'cv': forms.FileInput(attrs={
-                'class': 'basic-filepond'
+                'class': 'custom-file-input'
             }),
             'image': forms.FileInput(attrs={
-                'class': 'image-preview-filepond'
+                'class': 'custom-file-input'
             })
         }

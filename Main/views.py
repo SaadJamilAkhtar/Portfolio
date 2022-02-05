@@ -21,6 +21,8 @@ def index(request):
 
 
 def login_(request):
+    if request.user.is_authenticated:
+        return redirect(reverse("dashboard"))
     if request.POST:
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -38,9 +40,9 @@ def login_(request):
 @login_required()
 def dashboard(request):
     if request.POST:
+        print(request.POST)
         form = ProfileForm(request.POST, request.FILES, instance=Profile.objects.first())
         if form.is_valid():
-            print(form.cleaned_data)
             form.save()
     form = ProfileForm(instance=Profile.objects.first())
     data = {
