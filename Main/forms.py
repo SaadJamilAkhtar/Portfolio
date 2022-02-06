@@ -22,7 +22,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ["site_title", "name", "greeting", "main_designation", "about", "enable_pricing", "enable_services",
                   "enable_posts", "enable_testimonials", "cv", "image"]
-        labels = {"image": "Profile Image", "cv": "CV"}
+        labels = {"image": "Profile Image", "cv": "Resume"}
         exclude = ["pricing", "testimonials", "posts", "services"]
         widgets = {
             'cv': forms.FileInput(attrs={

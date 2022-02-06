@@ -40,14 +40,21 @@ def login_(request):
 @login_required()
 def dashboard(request):
     if request.POST:
-        print(request.POST)
         form = ProfileForm(request.POST, request.FILES, instance=Profile.objects.first())
         if form.is_valid():
             form.save()
-    form = ProfileForm(instance=Profile.objects.first())
+    profile = Profile.objects.first()
+    form = ProfileForm(instance=profile, initial={'cv': profile.cv.url if profile.cv else None})
     data = {
         "form": form,
         "page_title": "Profile",
         'site_title': "Dashboard"
     }
     return render(request, 'dashboard.html', data)
+
+
+@login_required()
+def resetProfile(request):
+    Profile.objects.all().delete()
+    Profile.objects.create()
+    return redirect(reverse('dashboard'))
