@@ -7,7 +7,7 @@ class Profile(models.Model):
     greeting = models.CharField(max_length=255, default="Hi!")
     main_designation = models.CharField(max_length=255, default="Web Developer")
     about = models.TextField(null=True, blank=True)
-    cv = models.FileField(upload_to='media/documents/', null=True, blank=True)
+    cv = models.FileField(upload_to='documents/', null=True, blank=True)
     enable_services = models.BooleanField(default=True)
     services = models.ManyToManyField('Services', blank=True)
     enable_pricing = models.BooleanField(default=True)

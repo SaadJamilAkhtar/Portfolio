@@ -12,3 +12,4 @@
 # Blocks in template
 1. body
 2. script
+3. dashboard
