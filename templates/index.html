@@ -105,63 +105,69 @@
 </section> <!-- end of about section -->
 
 <!-- service section -->
-<section class="section" id="service">
-    <div class="container text-center">
-        <p class="section-subtitle">What I Do ?</p>
-        <h6 class="section-title mb-6">Service</h6>
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="body">
-                        <img src="{% static 'assets/imgs/pencil-case.svg' %}" alt="Download free bootstrap 4 landing page,
+{% if user.enable_services %}
+    <section class="section" id="service">
+        <div class="container text-center">
+            <p class="section-subtitle">What I Do ?</p>
+            <h6 class="section-title mb-6">Service</h6>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static 'assets/imgs/pencil-case.svg' %}" alt="Download free bootstrap 4 landing page,
                              free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap
                              4.1.1 templates, meyawo Landing page" class="icon">
-                        <h6 class="title">Adipisicing</h6>
-                        <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias
-                            dolorem iste quod.</p>
+                            <h6 class="title">Adipisicing</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam
+                                molestias
+                                dolorem iste quod.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="body">
-                        <img src="{% static 'assets/imgs/responsive.svg' %}" alt="Download free bootstrap 4 landing page,
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static 'assets/imgs/responsive.svg' %}" alt="Download free bootstrap 4 landing page,
                              free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap
                              4.1.1 templates, meyawo Landing page" class="icon">
-                        <h6 class="title">Sapiente</h6>
-                        <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias
-                            dolorem iste quod.</p>
+                            <h6 class="title">Sapiente</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam
+                                molestias
+                                dolorem iste quod.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="body">
-                        <img src="{% static 'assets/imgs/toolbox.svg' %}" alt="Download free bootstrap 4 landing page,
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static 'assets/imgs/toolbox.svg' %}" alt="Download free bootstrap 4 landing page,
                              free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap
                              4.1.1 templates, meyawo Landing page" class="icon">
-                        <h6 class="title">Placeat</h6>
-                        <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias
-                            dolorem iste quod.</p>
+                            <h6 class="title">Placeat</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam
+                                molestias
+                                dolorem iste quod.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="body">
-                        <img src="{% static 'assets/imgs/analytics.svg' %}" alt="Download free bootstrap 4 landing page,
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static 'assets/imgs/analytics.svg' %}" alt="Download free bootstrap 4 landing page,
                              free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap
                              4.1.1 templates, meyawo Landing page" class="icon">
-                        <h6 class="title">Iusto</h6>
-                        <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias
-                            dolorem iste quod.</p>
+                            <h6 class="title">Iusto</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam
+                                molestias
+                                dolorem iste quod.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div><!-- end of row -->
-    </div>
-</section><!-- end of service section -->
+            </div><!-- end of row -->
+        </div>
+    </section><!-- end of service section -->
+{% endif %}
 
 <!-- portfolio section -->
 <section class="section" id="portfolio">
@@ -213,6 +219,7 @@
 </section> <!-- end of portfolio section -->
 
 <!-- pricing section -->
+{% if user.enable_pricing %}
 <section class="section" id="pricing">
     <div class="container text-center">
         <p class="section-subtitle">How Much I Charge ?</p>
@@ -292,6 +299,7 @@
         </div><!-- end of pricing wrapper -->
     </div> <!-- end of container -->
 </section><!-- end of pricing section -->
+{% endif %}
 
 <!-- section -->
 <section class="section-sm bg-primary">
@@ -310,6 +318,7 @@
     </div> <!-- end of container -->
 </section> <!-- end of section -->
 
+{% if user.enable_testimonials %}
 <!-- testimonial section -->
 <section class="section" id="testmonial">
     <div class="container text-center">
@@ -349,7 +358,9 @@
         </div>
     </div> <!-- end of container -->
 </section> <!-- end of testimonial section -->
+{% endif %}
 
+{% if user.enable_posts %}
 <!-- blog section -->
 <section class="section" id="blog">
     <!-- container -->
@@ -365,20 +376,20 @@
             <div class="blog-card-body">
                 <h6 class="blog-card-title">Consectetur adipisicing elit</h6>
 
-                    <p class="blog-card-caption">
-                        <a href="#">By: Admin</a>
-                        <a href="#"><i class="ti-heart text-danger"></i> 234</a>
-                        <a href="#"><i class="ti-comment"></i> 123</a>
-                    </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nesciunt qui sit velit delectus
-                        voluptates, repellat ipsum culpa id deleniti. Rerum debitis facilis accusantium neque numquam
-                        mollitia modi quasi distinctio.</p>
+                <p class="blog-card-caption">
+                    <a href="#">By: Admin</a>
+                    <a href="#"><i class="ti-heart text-danger"></i> 234</a>
+                    <a href="#"><i class="ti-comment"></i> 123</a>
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nesciunt qui sit velit delectus
+                    voluptates, repellat ipsum culpa id deleniti. Rerum debitis facilis accusantium neque numquam
+                    mollitia modi quasi distinctio.</p>
 
-                    <p><b>Necessitatibus nihil impedit! Ex nisi eveniet, dolor aliquid consequuntur repudiandae.</b></p>
-                    <p>Magnam in repellat enim harum omnis aperiam! Explicabo illo, commodi, dolor blanditiis cupiditate
-                        harum nisi vero accusamus laudantium voluptatibus dolores quae obcaecati.</p>
+                <p><b>Necessitatibus nihil impedit! Ex nisi eveniet, dolor aliquid consequuntur repudiandae.</b></p>
+                <p>Magnam in repellat enim harum omnis aperiam! Explicabo illo, commodi, dolor blanditiis cupiditate
+                    harum nisi vero accusamus laudantium voluptatibus dolores quae obcaecati.</p>
 
-                    <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
+                <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
             </div>
         </div><!-- end of blog wrapper -->
 
@@ -391,27 +402,27 @@
             <div class="blog-card-body">
                 <h6 class="blog-card-title">Explicabo illo</h6>
 
-                    <p class="blog-card-caption">
-                        <a href="#">By: Admin</a>
-                        <a href="#"><i class="ti-heart text-danger"></i> 456</a>
-                        <a href="#"><i class="ti-comment"></i> 264</a>
-                    </p>
+                <p class="blog-card-caption">
+                    <a href="#">By: Admin</a>
+                    <a href="#"><i class="ti-heart text-danger"></i> 456</a>
+                    <a href="#"><i class="ti-comment"></i> 264</a>
+                </p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim, vitae
-                        ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro quisquam
-                        vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto omnis
-                        praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae? Molestias
-                        excepturi corporis similique doloribus. Esse vitae earum architecto nulla non dolores illum at
-                        perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus eum commodi soluta
-                        distinctio sit repudiandae possimus sunt. Ipsum, rem.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim, vitae
+                    ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro quisquam
+                    vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto omnis
+                    praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae? Molestias
+                    excepturi corporis similique doloribus. Esse vitae earum architecto nulla non dolores illum at
+                    perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus eum commodi soluta
+                    distinctio sit repudiandae possimus sunt. Ipsum, rem.</p>
 
-                    <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
+                <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
             </div>
         </div><!-- end of blog wrapper -->
 
     </div><!-- end of container -->
 </section><!-- end of blog section -->
-
+{% endif %}
 <!-- contact section -->
 <section class="section" id="contact">
     <div class="container text-center">
