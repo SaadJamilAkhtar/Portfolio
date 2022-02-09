@@ -37,7 +37,7 @@ class Pricing(models.Model):
 
 class Services(models.Model):
     name = models.CharField(max_length=255)
-    category = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/services')
 
     class Meta:
