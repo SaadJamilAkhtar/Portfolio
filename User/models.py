@@ -18,6 +18,8 @@ class Profile(models.Model):
     posts = models.ManyToManyField('Posts', blank=True)
     linkedin = models.URLField(blank=True, null=True)
     image = models.ImageField(upload_to='images/profile', null=True, blank=True)
+    enable_portfolio = models.BooleanField(default=True)
+    portfolio = models.ManyToManyField('Portfolio', blank=True, null=True)
 
 
 class Testimonials(models.Model):
@@ -52,3 +54,9 @@ class Posts(models.Model):
 
     class Meta:
         verbose_name_plural = "Posts"
+
+
+class Portfolio(models.Model):
+    image = models.ImageField(upload_to='images/portfolio')
+    title = models.CharField(max_length=255)
+    description = models.TextField()
