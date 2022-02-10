@@ -21,7 +21,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ["site_title", "name", "greeting", "main_designation", "about", "enable_pricing", "enable_services",
-                  "enable_posts", "enable_testimonials", "cv", "image"]
+                  "enable_posts", "enable_testimonials", "enable_portfolio", "cv", "image"]
         labels = {"image": "Profile Image", "cv": "Resume"}
         exclude = ["pricing", "testimonials", "posts", "services"]
         widgets = {
