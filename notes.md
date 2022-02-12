@@ -12,4 +12,5 @@
 # Blocks in template
 1. body
 2. script
-3. dashboard
+3. style
+4. dashboard [ for activating link]

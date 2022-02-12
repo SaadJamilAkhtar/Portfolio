@@ -28,7 +28,7 @@
             <div class="sidebar-header">
                 <div class="d-flex justify-content-between">
                     <div class="logo">
-                        <a href="index.html"><img src="{% static 'assets/imgs/logo/logo.png' %}"
+                        <a href="{% url 'main' %}"><img src="{% static 'assets/imgs/logo/logo.png' %}"
                                                   style="height: 200px; margin-top: -70px; margin-bottom: -100px;"
                                                   alt="Logo" srcset=""></a>
                     </div>
@@ -42,7 +42,7 @@
                     <li class="sidebar-title">Menu</li>
 
                     <li class="sidebar-item {% block dashboard %} {% endblock %} ">
-                        <a href="index.html" class='sidebar-link'>
+                        <a href="{% url 'dashboard' %}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
                         </a>

@@ -1,0 +1,65 @@
+{% extends 'Main.html' %}
+
+{% block body %}
+    <section class="section">
+        <div class="row" id="table-responsive">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class=" col-sm-12 col-lg-9">
+                                <h4 class="card-title">All Services</h4>
+                            </div>
+                            <div class=" col-sm-12 col-lg-2 pt-2">
+                                <a href="" class="btn btn-primary btn-block">Add +</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+
+                        </div>
+                        <div class="table-responsive ">
+                            <table class="table table-bordered mb-0">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">#</th>
+                                    <th scope="col" class="text-center">Title</th>
+                                    <th scope="col" class="text-center">Edit</th>
+                                    <th scope="col" class="text-center">Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for service in services %}
+                                    <tr>
+                                        <td class="text-center">{{ service.id }}</td>
+                                        <td class="text-center">{{ service.name }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-2"></div>
+                                                <div class="col-sm-12 col-lg-8">
+                                                    <a href="" class="btn btn-secondary btn-block">Edit</a>
+                                                </div>
+                                                <div class="col-2"></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-2"></div>
+                                                <div class="col-sm-12 col-lg-8">
+                                                    <a href="" class="btn btn-danger btn-block">Delete</a>
+                                                </div>
+                                                <div class="col-2"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

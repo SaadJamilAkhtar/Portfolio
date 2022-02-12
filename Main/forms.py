@@ -32,3 +32,9 @@ class ProfileForm(forms.ModelForm):
                 'class': 'custom-file-input'
             })
         }
+
+
+class ServicesFom(forms.ModelForm):
+    class Meta:
+        model = Services
+        fields = '__all__'

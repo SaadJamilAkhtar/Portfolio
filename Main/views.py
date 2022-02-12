@@ -58,3 +58,15 @@ def resetProfile(request):
     Profile.objects.all().delete()
     Profile.objects.create()
     return redirect(reverse('dashboard'))
+
+
+@login_required()
+def services(request):
+    profile = Profile.objects.first()
+    all_services = profile.services.all()
+    data = {
+        'services': all_services,
+        'page_title': "Services",
+        'site_title': "Services"
+    }
+    return render(request, 'services.html', data)
