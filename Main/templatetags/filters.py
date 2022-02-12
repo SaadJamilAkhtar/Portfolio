@@ -9,7 +9,7 @@ def range_(number, diff=1):
 
 
 @register.filter(name='querysetToList')
-def querysetToList(queryset, index):
+def querysetToList(queryset, index=None):
     if not index:
         if queryset.count() > 0:
             return [element for element in queryset]
@@ -45,3 +45,12 @@ def toGrid(querySet, column):
             list_.append([temp, i])
         return list_
     return []
+
+
+@register.filter(name='upto')
+def upto(querySet, index):
+    if querySet.count() == 0:
+        return querySet
+    if querySet.count() > 3:
+        return querysetToList(querySet)[:index]
+    return querySet

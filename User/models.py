@@ -30,7 +30,7 @@ class Testimonials(models.Model):
     def save(self, *args, **kwargs):
         super(Testimonials, self).save(*args, **kwargs)
         profile = Profile.objects.first()
-        profile.posts.add(self)
+        profile.testimonials.add(self)
         profile.save()
 
     class Meta:
@@ -39,13 +39,13 @@ class Testimonials(models.Model):
 
 class Pricing(models.Model):
     plan_name = models.CharField(max_length=25, default="Basic")
-    description = models.CharField(max_length=255, default="Lorem ipsum")
+    description = models.TextField(default="Lorem ipsum")
     price = models.FloatField(default=0.0)
 
     def save(self, *args, **kwargs):
         super(Pricing, self).save(*args, **kwargs)
         profile = Profile.objects.first()
-        profile.posts.add(self)
+        profile.pricing.add(self)
         profile.save()
 
 
@@ -57,7 +57,7 @@ class Services(models.Model):
     def save(self, *args, **kwargs):
         super(Services, self).save(*args, **kwargs)
         profile = Profile.objects.first()
-        profile.posts.add(self)
+        profile.services.add(self)
         profile.save()
 
     class Meta:
@@ -88,5 +88,5 @@ class Portfolio(models.Model):
     def save(self, *args, **kwargs):
         super(Portfolio, self).save(*args, **kwargs)
         profile = Profile.objects.first()
-        profile.posts.add(self)
+        profile.portfolio.add(self)
         profile.save()
