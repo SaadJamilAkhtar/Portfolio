@@ -27,6 +27,12 @@ class Testimonials(models.Model):
     testimonial = models.TextField()
     name = models.CharField(max_length=15)
 
+    def save(self, *args, **kwargs):
+        super(Testimonials, self).save(*args, **kwargs)
+        profile = Profile.objects.first()
+        profile.posts.add(self)
+        profile.save()
+
     class Meta:
         verbose_name_plural = "Testimonials"
 
@@ -36,11 +42,23 @@ class Pricing(models.Model):
     description = models.CharField(max_length=255, default="Lorem ipsum")
     price = models.FloatField(default=0.0)
 
+    def save(self, *args, **kwargs):
+        super(Pricing, self).save(*args, **kwargs)
+        profile = Profile.objects.first()
+        profile.posts.add(self)
+        profile.save()
+
 
 class Services(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/services')
+
+    def save(self, *args, **kwargs):
+        super(Services, self).save(*args, **kwargs)
+        profile = Profile.objects.first()
+        profile.posts.add(self)
+        profile.save()
 
     class Meta:
         verbose_name_plural = "Services"
@@ -52,6 +70,12 @@ class Posts(models.Model):
     description = models.TextField()
     url = models.URLField(blank=True, null=True)
 
+    def save(self, *args, **kwargs):
+        super(Posts, self).save(*args, **kwargs)
+        profile = Profile.objects.first()
+        profile.posts.add(self)
+        profile.save()
+
     class Meta:
         verbose_name_plural = "Posts"
 
@@ -60,3 +84,9 @@ class Portfolio(models.Model):
     image = models.ImageField(upload_to='images/portfolio')
     title = models.CharField(max_length=255)
     category = models.CharField(max_length=50)
+
+    def save(self, *args, **kwargs):
+        super(Portfolio, self).save(*args, **kwargs)
+        profile = Profile.objects.first()
+        profile.posts.add(self)
+        profile.save()
