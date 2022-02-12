@@ -361,7 +361,7 @@
                 {% if user.pricing.all.count < 1 %}
                     <div class="pricing-card">
                         <div class="pricing-card-header">
-                            <img class="pricing-card-icon" src="{% static 'assets/imgs/scooter.svg' %}" alt="IMG">
+                            <img class="pricing-card-icon" src="{% static 'assets/imgs/pricing1.svg' %}" alt="IMG">
                         </div>
                         <div class="pricing-card-body">
                             <h6 class="pricing-card-title">Free</h6>
@@ -378,11 +378,11 @@
                             <span>$</span>
                             <span>0.00/Month</span>
                         </div>
-                        <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>
+{#                        <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>#}
                     </div>
                     <div class="pricing-card">
                         <div class="pricing-card-header">
-                            <img class="pricing-card-icon" src="{% static 'assets/imgs/shipped.svg' %}" alt="IMG">
+                            <img class="pricing-card-icon" src="{% static 'assets/imgs/pricing2.svg' %}" alt="IMG">
                         </div>
                         <div class="pricing-card-body">
                             <h6 class="pricing-card-title">Basic</h6>
@@ -399,11 +399,11 @@
                             <span>$</span>
                             <span>9.99/Month</span>
                         </div>
-                        <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>
+{#                        <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>#}
                     </div>
                     <div class="pricing-card">
                         <div class="pricing-card-header">
-                            <img class="pricing-card-icon" src="{% static 'assets/imgs/startup.svg' %}" alt="IMG">
+                            <img class="pricing-card-icon" src="{% static 'assets/imgs/pricing3.svg' %}" alt="IMG">
                         </div>
                         <div class="pricing-card-body">
                             <h6 class="pricing-card-title">Premium</h6>
@@ -420,26 +420,28 @@
                             <span>$</span>
                             <span>99.9/Month</span>
                         </div>
-                        <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>
-                    </div>
-                    {% else %}
-                    {% for price_instance in user.pricing.all|upto:3 %}
-                        <div class="pricing-card">
-                        <div class="pricing-card-header">
-                            <img class="pricing-card-icon" src="{% static 'assets/imgs/scooter.svg' %}" alt="IMG">
-                        </div>
-                        <div class="pricing-card-body">
-                            <h6 class="pricing-card-title">{{ price_instance.plan_name }}</h6>
-                            <div class="pricing-card-list">
-                                {{ price_instance.description|safe }}
-                            </div>
-                        </div>
-                        <div class="pricing-card-footer">
-                            <span>$</span>
-                            <span>{{ price_instance.price }}/Month</span>
-                        </div>
 {#                        <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>#}
                     </div>
+                {% else %}
+                    {% for price_instance in user.pricing.all|upto:3 %}
+                        <div class="pricing-card">
+                            <div class="pricing-card-header">
+                                <img class="pricing-card-icon"
+                                     src="{% static 'assets/imgs/pricing'|concat:price_instance.1|concat:'.svg' %}"
+                                     alt="IMG">
+                            </div>
+                            <div class="pricing-card-body">
+                                <h6 class="pricing-card-title">{{ price_instance.0.plan_name }}</h6>
+                                <div class="pricing-card-list">
+                                    {{ price_instance.0.description|safe }}
+                                </div>
+                            </div>
+                            <div class="pricing-card-footer">
+                                <span>$</span>
+                                <span>{{ price_instance.0.price }}/Month</span>
+                            </div>
+{#                                                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>#}
+                        </div>
                     {% endfor %}
                 {% endif %}
             </div><!-- end of pricing wrapper -->

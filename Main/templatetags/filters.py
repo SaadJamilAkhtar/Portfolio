@@ -52,5 +52,12 @@ def upto(querySet, index):
     if querySet.count() == 0:
         return querySet
     if querySet.count() > 3:
-        return querysetToList(querySet)[:index]
-    return querySet
+        data = querysetToList(querySet)[:index]
+        return [[data[i], i + 1] for i in range(3)]
+    data = querysetToList(querySet)
+    return [[data[i], i + 1] for i in range(len(data))]
+
+
+@register.filter(name='concat')
+def concat_(arg1, arg2):
+    return str(arg1) + str(arg2)
