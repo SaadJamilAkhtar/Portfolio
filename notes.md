@@ -15,3 +15,8 @@
 3. style
 4. dashboard [ for activating link]
 5. services
+
+# Page specific variables
+## form.html
+1. link
+2. link_text

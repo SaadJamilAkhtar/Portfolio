@@ -74,11 +74,18 @@ def services(request):
 
 @login_required()
 def addService(request):
+    if request.POST:
+        form = ServicesFom(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('services'))
     form = ServicesFom()
     data = {
         'form': form,
         'page_title': "Add Service",
         'site_title': "Add - Service",
-        'form_title': "New Service"
+        'form_title': "New Service",
+        'link': reverse('services'),
+        'link_text': "Back"
     }
     return render(request, 'form.html', data)

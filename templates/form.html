@@ -11,9 +11,14 @@
                 <div class="card-header">
                     <h4 class="card-title">
                         <div class="row">
-                            <div class="col-lg-9 col-sm-12 pb-3">
+                            <div class="col-sm-12 col-lg-9 pb-3">
                                 {{ form_title }}
                             </div>
+                            {% if link %}
+                                <div class="col-sm-12 col-lg-2 float-right">
+                                    <a href="{{ link }}" class="btn btn-block btn-primary">{{ link_text }}</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </h4>
                 </div>
