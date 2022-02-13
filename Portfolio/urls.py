@@ -27,4 +27,5 @@ urlpatterns = [
                   path('dashboard', dashboard, name='dashboard'),
                   path('profile/reset', resetProfile, name='reset-profile'),
                   path('services', services, name='services'),
+                  path('services/new', addService, name='add-services'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

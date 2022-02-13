@@ -14,3 +14,4 @@
 2. script
 3. style
 4. dashboard [ for activating link]
+5. services

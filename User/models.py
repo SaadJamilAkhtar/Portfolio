@@ -51,7 +51,7 @@ class Pricing(models.Model):
 
 class Services(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    description = models.TextField(max_length=255)
     image = models.ImageField(upload_to='images/services')
 
     def save(self, *args, **kwargs):

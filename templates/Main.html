@@ -29,8 +29,8 @@
                 <div class="d-flex justify-content-between">
                     <div class="logo">
                         <a href="{% url 'main' %}"><img src="{% static 'assets/imgs/logo/logo.png' %}"
-                                                  style="height: 200px; margin-top: -70px; margin-bottom: -100px;"
-                                                  alt="Logo" srcset=""></a>
+                                                        style="height: 200px; margin-top: -70px; margin-bottom: -100px;"
+                                                        alt="Logo" srcset=""></a>
                     </div>
                     <div class="toggler">
                         <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -45,6 +45,12 @@
                         <a href="{% url 'dashboard' %}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item {% block services %} {% endblock %} ">
+                        <a href="{% url 'services' %}" class='sidebar-link'>
+                            <i class="bi bi-grid-1x2-fill"></i>
+                            <span>Services</span>
                         </a>
                     </li>
                     {##}

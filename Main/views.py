@@ -70,3 +70,15 @@ def services(request):
         'site_title': "Services"
     }
     return render(request, 'services.html', data)
+
+
+@login_required()
+def addService(request):
+    form = ServicesFom()
+    data = {
+        'form': form,
+        'page_title': "Add Service",
+        'site_title': "Add - Service",
+        'form_title': "New Service"
+    }
+    return render(request, 'form.html', data)
