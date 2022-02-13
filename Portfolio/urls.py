@@ -28,4 +28,6 @@ urlpatterns = [
                   path('profile/reset', resetProfile, name='reset-profile'),
                   path('services', services, name='services'),
                   path('services/new', addService, name='add-services'),
+                  path('services/update/<int:id>', editService, name='edit-services'),
+                  path('services/del/<int:id>', deleteService, name='del-services'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

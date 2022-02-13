@@ -88,3 +88,36 @@ def addService(request):
         'link_text': "Back"
     }
     return render(request, 'form.html', data)
+
+
+@login_required()
+def editService(request, id):
+    service = Services.objects.filter(id=id)
+    if service.count() < 1:
+        return redirect(reverse('services'))
+    service = service.first()
+    if request.POST:
+        form = ServicesFom(request.POST, request.FILES, instance=service)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('services'))
+    form = ServicesFom(instance=service)
+    data = {
+        'form': form,
+        'page_title': "Edit Service",
+        'site_title': "Edit - Service",
+        'form_title': "Updated Service",
+        'link': reverse('services'),
+        'link_text': "Back"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def deleteService(request, id):
+    service = Services.objects.filter(id=id)
+    if service.count() < 1:
+        return redirect(reverse('services'))
+    service = service.first()
+    service.delete()
+    return redirect(reverse('services'))

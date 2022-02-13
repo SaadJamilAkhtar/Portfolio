@@ -26,7 +26,7 @@
                             <table class="table table-bordered mb-0">
                                 <thead>
                                 <tr>
-                                    <th scope="col" class="text-center">#</th>
+                                    <th scope="col" class="text-center">id#</th>
                                     <th scope="col" class="text-center">Title</th>
                                     <th scope="col" class="text-center">Edit</th>
                                     <th scope="col" class="text-center">Delete</th>
@@ -41,7 +41,8 @@
                                             <div class="row">
                                                 <div class="col-2"></div>
                                                 <div class="col-sm-12 col-lg-8">
-                                                    <a href="" class="btn btn-secondary btn-block">Edit</a>
+                                                    <a href="{% url 'edit-services' service.id %}"
+                                                       class="btn btn-secondary btn-block">Edit</a>
                                                 </div>
                                                 <div class="col-2"></div>
                                             </div>
@@ -50,7 +51,9 @@
                                             <div class="row">
                                                 <div class="col-2"></div>
                                                 <div class="col-sm-12 col-lg-8">
-                                                    <a href="" class="btn btn-danger btn-block">Delete</a>
+                                                    <a href="{% url 'del-services' service.id %}"
+                                                       onclick="return confirm('Are you sure you want to delete service ?')"
+                                                       class="btn btn-danger btn-block">Delete</a>
                                                 </div>
                                                 <div class="col-2"></div>
                                             </div>
