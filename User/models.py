@@ -33,6 +33,9 @@ class Testimonials(models.Model):
         profile.testimonials.add(self)
         profile.save()
 
+    def __str__(self):
+        return str(self.name) + "'s Testimonial"
+
     class Meta:
         verbose_name_plural = "Testimonials"
 
@@ -41,6 +44,9 @@ class Pricing(models.Model):
     plan_name = models.CharField(max_length=25, default="Basic")
     description = models.TextField(default="Lorem ipsum")
     price = models.FloatField(default=0.0)
+
+    def __str__(self):
+        return str(self.plan_name)
 
     def save(self, *args, **kwargs):
         super(Pricing, self).save(*args, **kwargs)
@@ -53,6 +59,9 @@ class Services(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(max_length=255)
     image = models.ImageField(upload_to='images/services')
+
+    def __str__(self):
+        return "Service - " + str(self.name)
 
     def save(self, *args, **kwargs):
         super(Services, self).save(*args, **kwargs)
@@ -76,6 +85,9 @@ class Posts(models.Model):
         profile.posts.add(self)
         profile.save()
 
+    def __str__(self):
+        return str(self.title)
+
     class Meta:
         verbose_name_plural = "Posts"
 
@@ -90,3 +102,6 @@ class Portfolio(models.Model):
         profile = Profile.objects.first()
         profile.portfolio.add(self)
         profile.save()
+
+    def __str__(self):
+        return str(self.title) + " - " + str(self.category)
