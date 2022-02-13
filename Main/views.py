@@ -62,8 +62,7 @@ def resetProfile(request):
 
 @login_required()
 def services(request):
-    profile = Profile.objects.first()
-    all_services = profile.services.all()
+    all_services = Services.objects.all()
     data = {
         'services': all_services,
         'page_title': "Services",

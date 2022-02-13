@@ -25,12 +25,13 @@ class ProfileForm(forms.ModelForm):
                   "enable_portfolio", "portfolio", "cv", "image"]
         labels = {"image": "Profile Image", "cv": "Resume"}
         widgets = {
-            'cv': forms.FileInput(attrs={
-                'class': 'custom-file-input'
-            }),
-            'image': forms.FileInput(attrs={
-                'class': 'custom-file-input'
-            })
+            # 'cv': forms.FileInput(attrs={
+            #     'class': 'custom-file-input'
+            # }),
+            # 'image': forms.FileInput(attrs={
+            #     'class': 'custom-file-input'
+            # }),
+
         }
 
 
