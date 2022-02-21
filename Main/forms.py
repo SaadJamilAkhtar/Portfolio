@@ -45,3 +45,9 @@ class PortfolioForm(forms.ModelForm):
     class Meta:
         model = Portfolio
         fields = "__all__"
+
+
+class PricingForm(forms.ModelForm):
+    class Meta:
+        model = Pricing
+        fields = "__all__"

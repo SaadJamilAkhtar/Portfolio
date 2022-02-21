@@ -85,7 +85,8 @@ def addService(request):
         'site_title': "Add - Service",
         'form_title': "New Service",
         'link': reverse('services'),
-        'link_text': "Back"
+        'link_text': "Back",
+        'active': "services"
     }
     return render(request, 'form.html', data)
 
@@ -108,7 +109,8 @@ def editService(request, id):
         'site_title': "Edit - Service",
         'form_title': "Updated Service",
         'link': reverse('services'),
-        'link_text': "Back"
+        'link_text': "Back",
+        'active': "services"
     }
     return render(request, 'form.html', data)
 
@@ -148,7 +150,8 @@ def addPortfolio(request):
         'site_title': "Add - Portfolio",
         'form_title': "New Portfolio Item",
         'link': reverse('portfolio'),
-        'link_text': "Back"
+        'link_text': "Back",
+        'active': "portfolio"
     }
     return render(request, 'form.html', data)
 
@@ -171,13 +174,77 @@ def editPortfolio(request, id):
         'site_title': "Edit - Portfolio",
         'form_title': "Updated Portfolio Item",
         'link': reverse('portfolio'),
-        'link_text': "Back"
+        'link_text': "Back",
+        'active': "portfolio"
     }
     return render(request, 'form.html', data)
 
 
 @login_required()
 def deletePortfolio(request, id):
+    portfolio_ = Portfolio.objects.filter(id=id)
+    if portfolio_.count() < 1:
+        return redirect(reverse('portfolio'))
+    portfolio_ = portfolio_.first()
+    portfolio_.delete()
+    return redirect(reverse('portfolio'))
+
+
+@login_required()
+def pricings(request):
+    all_pricing = Pricing.objects.all()
+    data = {
+        'pricing': all_pricing,
+        'page_title': "Pricing Entry",
+        'site_title': "Pricing"
+    }
+    return render(request, 'pricing.html', data)
+
+
+@login_required()
+def addPricing(request):
+    if request.POST:
+        form = PricingForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('pricing'))
+    form = PricingForm()
+    data = {
+        'form': form,
+        'page_title': "Add Pricing Entry",
+        'site_title': "Add - Pricing",
+        'form_title': "New Pricing Entry",
+        'link': reverse('pricing'),
+        'link_text': "Back"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def editPricing(request, id):
+    portfolio_ = Portfolio.objects.filter(id=id)
+    if portfolio_.count() < 1:
+        return redirect(reverse('portfolio'))
+    portfolio_ = portfolio_.first()
+    if request.POST:
+        form = PortfolioForm(request.POST, request.FILES, instance=portfolio_)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('portfolio'))
+    form = PortfolioForm(instance=portfolio_)
+    data = {
+        'form': form,
+        'page_title': "Edit Portfolio Item",
+        'site_title': "Edit - Portfolio",
+        'form_title': "Updated Portfolio Item",
+        'link': reverse('portfolio'),
+        'link_text': "Back"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def deletePricing(request, id):
     portfolio_ = Portfolio.objects.filter(id=id)
     if portfolio_.count() < 1:
         return redirect(reverse('portfolio'))

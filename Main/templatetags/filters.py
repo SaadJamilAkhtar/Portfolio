@@ -61,3 +61,4 @@ def upto(querySet, index):
 @register.filter(name='concat')
 def concat_(arg1, arg2):
     return str(arg1) + str(arg2)
+

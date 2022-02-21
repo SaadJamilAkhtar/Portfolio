@@ -1,8 +1,20 @@
 {% extends 'Main.html' %}
 {% load crispy_forms_tags %}
+
 {% block services %}
-    active
+    {% if active == "services" %}
+        active
+    {% endif %}
 {% endblock %}
+
+{% block portfolio %}
+    {% if active == "portfolio" %}
+        active
+    {% endif %}
+{% endblock %}
+
+
+
 {% block body %}
     <div class="row match-height">
         <div class="col-12">
