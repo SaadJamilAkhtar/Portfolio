@@ -13,7 +13,11 @@
     {% endif %}
 {% endblock %}
 
-
+{% block pricing %}
+    {% if active == "pricing" %}
+        active
+    {% endif %}
+{% endblock %}
 
 {% block body %}
     <div class="row match-height">

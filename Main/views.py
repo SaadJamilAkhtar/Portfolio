@@ -215,39 +215,41 @@ def addPricing(request):
         'site_title': "Add - Pricing",
         'form_title': "New Pricing Entry",
         'link': reverse('pricing'),
-        'link_text': "Back"
+        'link_text': "Back",
+        'active': "pricing"
     }
     return render(request, 'form.html', data)
 
 
 @login_required()
 def editPricing(request, id):
-    portfolio_ = Portfolio.objects.filter(id=id)
-    if portfolio_.count() < 1:
-        return redirect(reverse('portfolio'))
-    portfolio_ = portfolio_.first()
+    pricing_ = Pricing.objects.filter(id=id)
+    if pricing_.count() < 1:
+        return redirect(reverse('pricing'))
+    pricing_ = pricing_.first()
     if request.POST:
-        form = PortfolioForm(request.POST, request.FILES, instance=portfolio_)
+        form = PricingForm(request.POST, request.FILES, instance=pricing_)
         if form.is_valid():
             form.save()
-            return redirect(reverse('portfolio'))
-    form = PortfolioForm(instance=portfolio_)
+            return redirect(reverse('pricing'))
+    form = PricingForm(instance=pricing_)
     data = {
         'form': form,
         'page_title': "Edit Portfolio Item",
         'site_title': "Edit - Portfolio",
         'form_title': "Updated Portfolio Item",
-        'link': reverse('portfolio'),
-        'link_text': "Back"
+        'link': reverse('pricing'),
+        'link_text': "Back",
+        'active': "pricing"
     }
     return render(request, 'form.html', data)
 
 
 @login_required()
 def deletePricing(request, id):
-    portfolio_ = Portfolio.objects.filter(id=id)
-    if portfolio_.count() < 1:
-        return redirect(reverse('portfolio'))
-    portfolio_ = portfolio_.first()
+    pricing_ = Pricing.objects.filter(id=id)
+    if pricing_.count() < 1:
+        return redirect(reverse('pricing'))
+    portfolio_ = pricing_.first()
     portfolio_.delete()
-    return redirect(reverse('portfolio'))
+    return redirect(reverse('pricing'))
