@@ -121,3 +121,66 @@ def deleteService(request, id):
     service = service.first()
     service.delete()
     return redirect(reverse('services'))
+
+
+@login_required()
+def portfolio(request):
+    all_portfolios = Portfolio.objects.all()
+    data = {
+        'portfolios': all_portfolios,
+        'page_title': "Portfolio items",
+        'site_title': "Portfolio"
+    }
+    return render(request, 'portfolio.html', data)
+
+
+@login_required()
+def addPortfolio(request):
+    if request.POST:
+        form = PortfolioForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('portfolio'))
+    form = PortfolioForm()
+    data = {
+        'form': form,
+        'page_title': "Add Portfolio Item",
+        'site_title': "Add - Portfolio",
+        'form_title': "New Portfolio Item",
+        'link': reverse('portfolio'),
+        'link_text': "Back"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def editPortfolio(request, id):
+    portfolio_ = Portfolio.objects.filter(id=id)
+    if portfolio_.count() < 1:
+        return redirect(reverse('portfolio'))
+    portfolio_ = portfolio_.first()
+    if request.POST:
+        form = PortfolioForm(request.POST, request.FILES, instance=portfolio_)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('portfolio'))
+    form = PortfolioForm(instance=portfolio_)
+    data = {
+        'form': form,
+        'page_title': "Edit Portfolio Item",
+        'site_title': "Edit - Portfolio",
+        'form_title': "Updated Portfolio Item",
+        'link': reverse('portfolio'),
+        'link_text': "Back"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def deletePortfolio(request, id):
+    portfolio_ = Portfolio.objects.filter(id=id)
+    if portfolio_.count() < 1:
+        return redirect(reverse('portfolio'))
+    portfolio_ = portfolio_.first()
+    portfolio_.delete()
+    return redirect(reverse('portfolio'))

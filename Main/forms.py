@@ -39,3 +39,9 @@ class ServicesFom(forms.ModelForm):
     class Meta:
         model = Services
         fields = '__all__'
+
+
+class PortfolioForm(forms.ModelForm):
+    class Meta:
+        model = Portfolio
+        fields = "__all__"
