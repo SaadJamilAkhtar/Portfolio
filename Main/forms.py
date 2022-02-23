@@ -51,3 +51,9 @@ class PricingForm(forms.ModelForm):
     class Meta:
         model = Pricing
         fields = "__all__"
+
+
+class TestimonialsForm(forms.ModelForm):
+    class Meta:
+        model = Testimonials
+        fields = '__all__'

@@ -172,7 +172,7 @@ def editPortfolio(request, id):
         'form': form,
         'page_title': "Edit Portfolio Item",
         'site_title': "Edit - Portfolio",
-        'form_title': "Updated Portfolio Item",
+        'form_title': "Update Portfolio Item",
         'link': reverse('portfolio'),
         'link_text': "Back",
         'active': "portfolio"
@@ -237,7 +237,7 @@ def editPricing(request, id):
         'form': form,
         'page_title': "Edit Portfolio Item",
         'site_title': "Edit - Portfolio",
-        'form_title': "Updated Portfolio Item",
+        'form_title': "Update Portfolio Item",
         'link': reverse('pricing'),
         'link_text': "Back",
         'active': "pricing"
@@ -253,3 +253,69 @@ def deletePricing(request, id):
     portfolio_ = pricing_.first()
     portfolio_.delete()
     return redirect(reverse('pricing'))
+
+
+
+@login_required()
+def testimonials(request):
+    testimonial = Testimonials.objects.all()
+    data = {
+        'testimonials': testimonial,
+        'page_title': "Testimonials",
+        'site_title': "Testimonials"
+    }
+    return render(request, 'testimonials.html', data)
+
+
+@login_required()
+def addTestimonials(request):
+    if request.POST:
+        form = TestimonialsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('testimonials'))
+    form = TestimonialsForm()
+    data = {
+        'form': form,
+        'page_title': "Add Testimonial Entry",
+        'site_title': "Add - Testimonial",
+        'form_title': "New Testimonial Entry",
+        'link': reverse('testimonials'),
+        'link_text': "Back",
+        'active': "testimonials"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def editTestimonials(request, id):
+    testimonial = Testimonials.objects.filter(id=id)
+    if testimonial.count() < 1:
+        return redirect(reverse('pricing'))
+    testimonial = testimonial.first()
+    if request.POST:
+        form = TestimonialsForm(request.POST, request.FILES, instance=testimonial)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('testimonials'))
+    form = TestimonialsForm(instance=testimonial)
+    data = {
+        'form': form,
+        'page_title': "Edit Testimonial",
+        'site_title': "Edit - Testimonial",
+        'form_title': "Updated Testimonial",
+        'link': reverse('testimonials'),
+        'link_text': "Back",
+        'active': "testimonials"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def deleteTestimonials(request, id):
+    testimonial = Testimonials.objects.filter(id=id)
+    if testimonial.count() < 1:
+        return redirect(reverse('testimonials'))
+    testimonial = testimonial.first()
+    testimonial.delete()
+    return redirect(reverse('testimonials'))
