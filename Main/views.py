@@ -107,7 +107,7 @@ def editService(request, id):
         'form': form,
         'page_title': "Edit Service",
         'site_title': "Edit - Service",
-        'form_title': "Updated Service",
+        'form_title': "Update Service",
         'link': reverse('services'),
         'link_text': "Back",
         'active': "services"
@@ -255,7 +255,6 @@ def deletePricing(request, id):
     return redirect(reverse('pricing'))
 
 
-
 @login_required()
 def testimonials(request):
     testimonial = Testimonials.objects.all()
@@ -291,7 +290,7 @@ def addTestimonials(request):
 def editTestimonials(request, id):
     testimonial = Testimonials.objects.filter(id=id)
     if testimonial.count() < 1:
-        return redirect(reverse('pricing'))
+        return redirect(reverse('testimonials'))
     testimonial = testimonial.first()
     if request.POST:
         form = TestimonialsForm(request.POST, request.FILES, instance=testimonial)
@@ -303,7 +302,7 @@ def editTestimonials(request, id):
         'form': form,
         'page_title': "Edit Testimonial",
         'site_title': "Edit - Testimonial",
-        'form_title': "Updated Testimonial",
+        'form_title': "Update Testimonial",
         'link': reverse('testimonials'),
         'link_text': "Back",
         'active': "testimonials"
@@ -319,3 +318,68 @@ def deleteTestimonials(request, id):
     testimonial = testimonial.first()
     testimonial.delete()
     return redirect(reverse('testimonials'))
+
+
+@login_required()
+def posts(request):
+    posts_ = Posts.objects.all()
+    data = {
+        'posts': posts_,
+        'page_title': "Posts",
+        'site_title': "Posts"
+    }
+    return render(request, 'posts.html', data)
+
+
+@login_required()
+def addPosts(request):
+    if request.POST:
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('posts'))
+    form = PostForm()
+    data = {
+        'form': form,
+        'page_title': "Add New Post",
+        'site_title': "Add - Post",
+        'form_title': "New Post Entry",
+        'link': reverse('posts'),
+        'link_text': "Back",
+        'active': "posts"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def editPosts(request, id):
+    post = Posts.objects.filter(id=id)
+    if post.count() < 1:
+        return redirect(reverse('posts'))
+    post = post.first()
+    if request.POST:
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('posts'))
+    form = PostForm(instance=post)
+    data = {
+        'form': form,
+        'page_title': "Edit Post",
+        'site_title': "Edit - Post",
+        'form_title': "Update Post",
+        'link': reverse('posts'),
+        'link_text': "Back",
+        'active': "posts"
+    }
+    return render(request, 'form.html', data)
+
+
+@login_required()
+def deletePosts(request, id):
+    post = Posts.objects.filter(id=id)
+    if post.count() < 1:
+        return redirect(reverse('posts'))
+    post = post.first()
+    post.delete()
+    return redirect(reverse('posts'))

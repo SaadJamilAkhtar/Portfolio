@@ -59,16 +59,22 @@
                             <span>Portfolio</span>
                         </a>
                     </li>
-                <li class="sidebar-item {% block pricing %} {% endblock %} ">
+                    <li class="sidebar-item {% block pricing %} {% endblock %} ">
                         <a href="{% url 'pricing' %}" class='sidebar-link'>
                             <i class="bi bi-cash"></i>
                             <span>Pricings</span>
                         </a>
                     </li>
-                <li class="sidebar-item {% block testimonials %} {% endblock %} ">
+                    <li class="sidebar-item {% block testimonials %} {% endblock %} ">
                         <a href="{% url 'testimonials' %}" class='sidebar-link'>
-                            <i class="bi bi-cash"></i>
+                            <i class="bi bi-pen-fill"></i>
                             <span>Testimonials</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item {% block posts %} {% endblock %} ">
+                        <a href="{% url 'posts' %}" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                            <span>Posts</span>
                         </a>
                     </li>
                     {##}

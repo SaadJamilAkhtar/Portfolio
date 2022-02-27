@@ -57,3 +57,9 @@ class TestimonialsForm(forms.ModelForm):
     class Meta:
         model = Testimonials
         fields = '__all__'
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Posts
+        fields = '__all__'

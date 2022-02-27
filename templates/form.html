@@ -1,5 +1,10 @@
 {% extends 'Main.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'assets/vendors/summernote/summernote-lite.min.css' %}">
+{% endblock %}
 
 {% block services %}
     {% if active == "services" %}
@@ -21,6 +26,12 @@
 
 {% block testimonials %}
     {% if active == "testimonials" %}
+        active
+    {% endif %}
+{% endblock %}
+
+{% block posts %}
+    {% if active == "posts" %}
         active
     {% endif %}
 {% endblock %}
@@ -66,4 +77,17 @@
             </div>
         </div>
     </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'assets/vendors/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/summernote/summernote-lite.min.js' %}"></script>
+    <script>
+        $('#id_description').summernote({
+            tabsize: 2,
+            height: 120,
+        })
+    </script>
+
 {% endblock %}
