@@ -76,7 +76,7 @@ class Services(models.Model):
 class Posts(models.Model):
     image = models.ImageField(upload_to='images/posts')
     title = models.CharField(max_length=255)
-    description = models.TextField()
+    content = models.TextField()
 
     def save(self, *args, **kwargs):
         super(Posts, self).save(*args, **kwargs)
