@@ -62,3 +62,7 @@ def upto(querySet, index):
 def concat_(arg1, arg2):
     return str(arg1) + str(arg2)
 
+
+@register.filter(name='maxLength')
+def maxLength(arg1, arg2):
+    return arg1[:int(arg2)]
