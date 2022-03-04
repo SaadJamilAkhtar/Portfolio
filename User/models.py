@@ -104,3 +104,16 @@ class Portfolio(models.Model):
 
     def __str__(self):
         return str(self.title) + " - " + str(self.category)
+
+
+class Settings(models.Model):
+    host_list = [('smtp.gmail.com', 'gmail'), ('smtp-mail.outlook.com', 'outlook')]
+    port_list = [(587, 'gmail'), (587, 'outlook')]
+    from_email = models.EmailField()
+    password = models.CharField(max_length=255)
+    to_email = models.EmailField()
+    host = models.CharField(max_length=255, choices=host_list, default='smtp.gmail.com')
+    port = models.PositiveIntegerField(choices=port_list, default=587)
+
+    class Meta:
+        verbose_name_plural = 'Settings'
