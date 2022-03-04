@@ -17,7 +17,7 @@ def index(request):
         'user': user
     }
 
-    return render(request, 'index.html', data)
+    return render(request, 'index/index1/index.html', data)
 
 
 def login_(request):
@@ -383,3 +383,14 @@ def deletePosts(request, id):
     post = post.first()
     post.delete()
     return redirect(reverse('posts'))
+
+
+def projectDetails(request, id):
+    post = Posts.objects.filter(id=id)
+    if post.count() < 1:
+        return redirect(reverse('main'))
+    post = post.first()
+    data = {
+        'post': post
+    }
+    return render(request, 'index/index1/project.html', data)

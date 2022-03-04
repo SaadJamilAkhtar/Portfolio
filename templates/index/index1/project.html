@@ -1,0 +1,28 @@
+{% extends 'index/index1/main.html' %}
+{% load static %}
+
+{% block body %}
+    <!-- Page Header -->
+    <header class="header header-mini p-0 bg-white">
+        <img src="{{ post.image.url }}" alt="Post Img"
+             style="max-height:100%; width:100vw; object-fit: cover;">
+        {#        <div class="header-title text-white">{{ post.title }}</div>#}
+    </header> <!-- End Of Page Header -->
+
+    <!-- main content -->
+    <div class="container">
+
+        <!-- Buttons -->
+        <h3 class="mt-5">{{ post.title }}</h3>
+        <hr>
+    <p>{{ post.content | safe }}</p>
+    <div class="mt-4 mb-5">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <a href="{% url 'main' %}" class="btn btn-outline-primary btn-block">Home</a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+{% endblock %}
