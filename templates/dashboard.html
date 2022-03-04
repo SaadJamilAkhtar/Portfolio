@@ -31,14 +31,20 @@
                             <div class="form-body">
                                 <div class="row">
                                     {{ form | crispy }}
-                                    <div class="col-12 d-flex justify-content-end pt-3">
-                                        <a href="{% url 'reset-profile' %}"
-                                           onclick="return confirm('Are you sure you want to reset profile?')"
-                                           class="btn btn-block btn-light-secondary me-1 mb-1">Reset</a>
-                                        <button type="submit" class="btn btn-block btn-primary me-1 mb-1"
+                                    <div class="col-12 pt-3">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <a href="{% url 'reset-profile' %}"
+                                                   onclick="return confirm('Are you sure you want to reset profile?')"
+                                                   class="btn btn-block btn-light-secondary">Reset</a>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <button type="submit" class="btn btn-block btn-primary me-1 mb-1"
                                                 name="sub-button">
                                             Submit
                                         </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

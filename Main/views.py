@@ -325,8 +325,8 @@ def posts(request):
     posts_ = Posts.objects.all()
     data = {
         'posts': posts_,
-        'page_title': "Posts",
-        'site_title': "Posts"
+        'page_title': "Projects",
+        'site_title': "Projects"
     }
     return render(request, 'posts.html', data)
 
@@ -341,9 +341,9 @@ def addPosts(request):
     form = PostForm()
     data = {
         'form': form,
-        'page_title': "Add New Post",
-        'site_title': "Add - Post",
-        'form_title': "New Post Entry",
+        'page_title': "Add New Project",
+        'site_title': "Add - Project",
+        'form_title': "New Project Entry",
         'link': reverse('posts'),
         'link_text': "Back",
         'active': "posts"
@@ -365,9 +365,9 @@ def editPosts(request, id):
     form = PostForm(instance=post)
     data = {
         'form': form,
-        'page_title': "Edit Post",
-        'site_title': "Edit - Post",
-        'form_title': "Update Post",
+        'page_title': "Edit Project",
+        'site_title': "Edit - Project",
+        'form_title': "Update Project",
         'link': reverse('posts'),
         'link_text': "Back",
         'active': "posts"
