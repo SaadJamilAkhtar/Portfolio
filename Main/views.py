@@ -20,7 +20,7 @@ def index(request):
         message = request.POST.get('message')
         settings = Settings.objects.first()
         if settings.from_email:
-            send_mail(subject="Hi Message From Your Idenify", message=f"{message}\n\nFrom : {name}\nEmail : {email}",
+            send_mail(subject="Hi, Message From Your Idenify", message=f"{message}\n\nFrom : {name}\nEmail : {email}",
                       from_email=settings.from_email, recipient_list=[settings.to_email], auth_user=settings.from_email,
                       auth_password=settings.password)
 
