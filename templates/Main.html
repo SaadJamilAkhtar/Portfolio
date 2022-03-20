@@ -77,6 +77,18 @@
                             <span>Projects</span>
                         </a>
                     </li>
+                    <li class="sidebar-item {% block settings %} {% endblock %} ">
+                        <a href="{% url 'settings' %}" class='sidebar-link'>
+                            <i class="bi bi-nut"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item ">
+                        <a href="{% url 'admin:index' %}" class='sidebar-link'>
+                            <i class="bi bi-person-fill"></i>
+                            <span>Admin</span>
+                        </a>
+                    </li>
                     {##}
                     {#                    <li class="sidebar-item  has-sub">#}
                     {#                        <a href="#" class='sidebar-link'>#}

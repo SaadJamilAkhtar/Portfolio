@@ -36,6 +36,12 @@
     {% endif %}
 {% endblock %}
 
+{% block settings %}
+    {% if active == "settings" %}
+        active
+    {% endif %}
+{% endblock %}
+
 {% block body %}
     <div class="row match-height">
         <div class="col-12">

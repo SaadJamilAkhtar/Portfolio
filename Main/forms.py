@@ -63,3 +63,12 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Posts
         fields = '__all__'
+
+
+class EmailSettingForm(forms.ModelForm):
+    class Meta:
+        model = Settings
+        fields = '__all__'
+        widgets = {
+            'password': forms.PasswordInput()
+        }

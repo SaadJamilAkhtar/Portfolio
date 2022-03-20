@@ -21,7 +21,7 @@ from django.views.generic import TemplateView
 from Main.views import *
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
+                  path('admin/', admin.site.urls, name="admin"),
                   path('', index, name='main'),
                   path('login', login_, name='login'),
                   path('dashboard', dashboard, name='dashboard'),
@@ -46,5 +46,6 @@ urlpatterns = [
                   path('projects/new', addPosts, name='add-posts'),
                   path('projects/edit/<int:id>', editPosts, name='edit-posts'),
                   path('projects/del/<int:id>', deletePosts, name='del-posts'),
-                  path('projects/details/<int:id>', projectDetails, name='project-details')
+                  path('projects/details/<int:id>', projectDetails, name='project-details'),
+                  path('settings', EditSettings, name='settings')
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

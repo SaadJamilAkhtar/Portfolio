@@ -110,7 +110,7 @@ class Settings(models.Model):
     host_list = [('smtp.gmail.com', 'gmail'), ('smtp-mail.outlook.com', 'outlook')]
     port_list = [(587, 'gmail'), (587, 'outlook')]
     from_email = models.EmailField(blank=True, null=True)
-    password = models.CharField(max_length=255,blank=True, null=True)
+    password = models.CharField(max_length=255, blank=True, null=True)
     to_email = models.EmailField(blank=True, null=True)
     host = models.CharField(max_length=255, choices=host_list, default='smtp.gmail.com')
     port = models.PositiveIntegerField(choices=port_list, default=587)

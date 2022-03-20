@@ -10,6 +10,7 @@ from .forms import *
 def index(request):
     users = Profile.objects.all()
     if users.count() == 0:
+        Settings.objects.create()
         Profile.objects.create()
     user = Profile.objects.first()
 
@@ -394,3 +395,24 @@ def projectDetails(request, id):
         'post': post
     }
     return render(request, 'index/index1/project.html', data)
+
+
+def EditSettings(request):
+    settings = Settings.objects.all().first()
+    if request.POST:
+        form = EmailSettingForm(request.POST, instance=settings)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('dashboard'))
+    form = EmailSettingForm(instance=settings)
+    data = {
+        'form': form,
+        'page_title': "Settings",
+        'site_title': "Settings",
+        'form_title': "Update Settings",
+        'link': reverse('dashboard'),
+        'link_text': "Back",
+        'active': "settings"
+    }
+    return render(request, 'form.html', data)
+
