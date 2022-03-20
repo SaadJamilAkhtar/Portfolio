@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
@@ -425,3 +425,8 @@ def EditSettings(request):
         'active': "settings"
     }
     return render(request, 'form.html', data)
+
+
+def logout_(request):
+    logout(request)
+    return redirect(reverse('main'))

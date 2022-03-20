@@ -47,5 +47,6 @@ urlpatterns = [
                   path('projects/edit/<int:id>', editPosts, name='edit-posts'),
                   path('projects/del/<int:id>', deletePosts, name='del-posts'),
                   path('projects/details/<int:id>', projectDetails, name='project-details'),
-                  path('settings', EditSettings, name='settings')
+                  path('settings', EditSettings, name='settings'),
+                  path('logout', logout_, name='logout'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
