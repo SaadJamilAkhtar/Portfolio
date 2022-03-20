@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
@@ -13,6 +14,15 @@ def index(request):
         Settings.objects.create()
         Profile.objects.create()
     user = Profile.objects.first()
+    if request.POST:
+        email = request.POST.get('email')
+        name = request.POST.get('name')
+        message = request.POST.get('message')
+        settings = Settings.objects.first()
+        if settings.from_email:
+            send_mail(subject="Hi Message From Your Idenify", message=f"{message}\n\nFrom : {name}\nEmail : {email}",
+                      from_email=settings.from_email, recipient_list=[settings.to_email], auth_user=settings.from_email,
+                      auth_password=settings.password)
 
     data = {
         'user': user
@@ -415,4 +425,3 @@ def EditSettings(request):
         'active': "settings"
     }
     return render(request, 'form.html', data)
-
