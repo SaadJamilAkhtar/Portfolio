@@ -18,6 +18,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
+
+from Main.idenifyUtils import setup
 from Main.views import *
 
 urlpatterns = [
@@ -50,3 +52,8 @@ urlpatterns = [
                   path('settings', EditSettings, name='settings'),
                   path('logout', logout_, name='logout'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+try:
+    setup()
+except:
+    pass
