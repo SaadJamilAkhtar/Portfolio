@@ -12,6 +12,7 @@ V-1.0 Done
 - Setup Testimonials
 - Enable / Disable Sections
 - Setup Projects
+- Advance Editor for Projects Section
 
 ## Tech Stack
 
